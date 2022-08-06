@@ -22,9 +22,9 @@ function newItem(source, pleft, pbottom){
 function newTile(source, pleft, pbottom, pheight){
     for(x=0; x<(window.innerWidth/100);x++){
         for(y=0; y<pheight/100; y++){
-        newImage(source, (pleft+(x*100)), pbottom+(y*100))
-        }
-    }
+        newImage(source, (pleft+(x*100)), pbottom+(y*100));
+        };
+    };
 };
 
 // Invoke Functions
