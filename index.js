@@ -1,3 +1,8 @@
+// Declare Variables
+let horizonHeight = window.innerHeight / 1.75;
+let skyHeight = window.innerHeight - horizonHeight;
+
+// Declare Functions
 function newImage(source, pleft, pbottom){
     let object = document.createElement('img');
     object.src = source;
@@ -22,9 +27,10 @@ function newTile(source, pleft, pbottom, pheight){
     }
 };
 
-newTile('assets/sky.png', 0, window.innerHeight / 1.75, window.innerHeight - (window.innerHeight / 1.75) / 100);
+// Invoke Functions
+newTile('assets/sky.png', 0, horizonHeight, skyHeight);
 
-newTile('assets/grass.png', 0, 0, window.innerHeight / 1.75);
+newTile('assets/grass.png', 0, 0, horizonHeight);
 
 newImage('assets/green-character.gif', 100, 100);
 
