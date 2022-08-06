@@ -1,34 +1,45 @@
-function newImage(label, source, pleft, pbottom, item){
-    label = document.createElement('img');
-    label.src = source;
-    label.style.position = 'fixed';
-    label.style.left = pleft;
-    label.style.bottom = pbottom;
-    document.body.append(label);
+function newImage(source, pleft, pbottom){
+    let object = document.createElement('img');
+    object.src = source;
+    object.style.position = 'fixed';
+    object.style.left = pleft + 'px';
+    object.style.bottom = pbottom + 'px';
+    document.body.append(object);
 
-    if(item){
-        newItem(label);
+    return object;
+};
+
+function newItem(source, pleft, pbottom){
+    let object = newImage(source, pleft, pbottom);
+    object.addEventListener('dblclick', function(){object.remove()});
+};
+
+function newTile(source, pleft, pbottom, pheight){
+    for(x=0; x<(window.innerWidth/100);x++){
+        for(y=0; y<pheight/100; y++){
+        newImage(source, (pleft+(x*100)), pbottom+(y*100))
+        }
     }
 };
 
-function newItem(label){
-    label.addEventListener('click', function(){label.remove()});
-}
+newTile('assets/sky.png', 0, window.innerHeight / 1.75, window.innerHeight - (window.innerHeight / 1.75) / 100);
 
-newImage('greenCharacter', 'assets/green-character.gif', '100px', '100px');
+newTile('assets/grass.png', 0, 0, window.innerHeight / 1.75);
 
-newImage('pineTree', 'assets/pine-tree.png', '450px', '200px');
+newImage('assets/green-character.gif', 100, 100);
 
-newImage('tree', 'assets/tree.png', '200px', '300px' );
+newImage('assets/pine-tree.png', 450, 200);
 
-newImage('pillar', 'assets/pillar.png', '350px', '100px');
+newImage('assets/tree.png', 200, 300 );
 
-newImage('crate', 'assets/crate.png', '150px', '200px');
+newImage('assets/pillar.png', 350, 100);
 
-newImage('well', 'assets/well.png', '500px', '425px');
+newImage('assets/crate.png', 150, 200);
 
-newImage('sword', 'assets/sword.png', '500px', '405px',1);
+newImage('assets/well.png', 500, 425);
 
-newImage('shield', 'assets/shield.png', '165px', '185px',1);
+newItem('assets/sword.png', 500, 405);
 
-newImage('staff', 'assets/staff.png', '600px', '100px',1);
+newItem('assets/shield.png', 165, 185);
+
+newItem('assets/staff.png', 600, 100);
